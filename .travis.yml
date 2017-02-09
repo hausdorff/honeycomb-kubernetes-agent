@@ -1,0 +1,5 @@
+services:
+ - docker
+
+install:
+ - docker build -t fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER} ./fluentd-hny-image
