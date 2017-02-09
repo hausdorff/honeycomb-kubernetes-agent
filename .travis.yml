@@ -3,5 +3,5 @@ language: python # why not
 services:
  - docker
 
-install:
+script:
  - docker build -t fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER} ./fluentd-hny-image
