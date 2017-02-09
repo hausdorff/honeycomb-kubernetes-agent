@@ -4,4 +4,11 @@ services:
  - docker
 
 script:
- - docker build -t fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER} ./fluentd-hny-image
+ - docker build -t honeycombio/fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER} ./fluentd-hny-image
+
+after_success:
+ - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+ - docker push honeycombio/fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER}
+
+after_failure:
+ - docker logs honeycombio/fluentd-honeycomb:1.${TRAVIS_BUILD_NUMBER}
