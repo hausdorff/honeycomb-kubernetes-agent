@@ -1,3 +1,5 @@
+language: python # why not
+
 services:
  - docker
 
